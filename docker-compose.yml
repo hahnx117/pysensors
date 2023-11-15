@@ -1,0 +1,14 @@
+version: "3"
+
+services:
+  pysensors:
+    container_name: pysensors
+    hostname: ${HOSTNAME}
+    image: pysensors:latest
+    env_file: .env
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+    devices:
+      - /dev/i2c-1
+      - /dev/i2c-2
+    restart: unless-stopped
